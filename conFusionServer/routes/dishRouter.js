@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 
 const Dishes = require('../models/dishes');
 
@@ -78,6 +77,7 @@ dishRouter.route('/:dishId')
     .catch((err) => next(err));
 });
 
+/* handlers for /:dishId/comments */
 dishRouter.route('/:dishId/comments')
 .get((req, res, next) => {
     Dishes.findById(req.params.dishId)
@@ -139,7 +139,7 @@ dishRouter.route('/:dishId/comments')
     .catch((err) => next(err));
 });
 
-/* handlers for /:dishId */
+/* handlers for /:dishId/comments/:commentId */
 dishRouter.route('/:dishId/comments/:commentId')
 .get((req, res, next) => {
     Dishes.findById(req.params.dishId)
