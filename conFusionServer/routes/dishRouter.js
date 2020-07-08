@@ -148,6 +148,7 @@ dishRouter.route('/:dishId/comments/:commentId')
 .get((req, res, next) => {
     Dishes.findById(req.params.dishId).populate('comments.author')
     .then((dish) => {
+        console.log(dish.comments);
         if(dish != null && dish.comments.id(req.params.commentId) != null) {
 
             res.statusCode = 200;
